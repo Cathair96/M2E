@@ -1,0 +1,310 @@
+@import "normalise";
+@import "base";
+@import "variables";
+@import "mixins";
+
+/*
+Global Styles
+*/
+
+body {
+	background-color: $background;
+}
+
+#root {
+	min-height: 100vh;
+	position: relative;
+	padding-bottom: 150px;
+}
+
+.container {
+	max-width: 1200px;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.blue-span {
+	color: $light-blue;
+}
+
+/*
+Header and Navigation
+*/
+
+nav {
+	height: 100px;
+	background-color: $main-grey;
+}
+
+nav .container {
+	position: relative;
+}
+
+.mobile {
+	display: none
+}
+
+.hamburger-icon {
+	width: 35px;
+	height: 32px;
+	border: 2px solid $white;
+	border-radius: 10%;
+	position: absolute;
+	right: 8px;
+	cursor: pointer;
+}
+
+.hamburger-line {
+	width: 25px;
+	height: 3px;
+	margin: 0 auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	background-color: $white;
+}
+
+.desk-mobile-nav .mobile {
+	background-color: $light-blue;
+	position: absolute;
+	width: 100%;
+	z-index: 99
+}
+
+.desk-mobile-nav .mobile div {
+	margin: 8px 0px;
+}
+
+.logo {
+	position: absolute;
+	left: 8px;
+	cursor: pointer;
+	&::after {
+		content: '';
+		display: block;
+		height: 5px;
+		width: 100%;
+		background-color: $white;
+	}
+}
+
+.logo h2 {
+	color: $white;
+	font-family: 'Karla', sans-serif;
+	font-size: 24pt;
+}
+
+.menu h3 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: normal;
+	color: $white;
+	margin: 0px 16px;
+	cursor: pointer;
+}
+
+.cart {
+	position: absolute;
+	right: 8px;
+	color: $white;
+	cursor: pointer;
+}
+
+.shopping-cart {
+	font-size: 32px;
+}
+
+.infobar {
+	height: 50px;
+	background-color: $light-blue;
+}
+
+.infobar p {
+	color: $white;
+	text-align: center;
+}
+
+.location-bar {
+	height: 50px;
+}
+
+.location-links {
+	@include display-flex(column, center, null, null);
+}
+
+.location-link {
+	margin-left: 10px;
+}
+
+.location-link a {
+	color: $black;
+}
+
+.location-link p {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.flex {
+	@include display-flex(column, center, center, null);
+}
+
+.flex-row {
+	@include display-flex(row, center, center, null);
+}
+
+/*
+	Stock Page
+*/
+
+.stock-wrapper {
+	@include display-flex(row, center, null, wrap);
+}
+
+.item-wrapper {
+	margin: 0px 10px 32px 10px;
+}
+
+.item-image-wrapper {
+	@include adjust-stock(280px, 280px);
+	background-color: $white;
+	position: relative;
+	cursor: pointer;
+}
+
+.item-image {
+	margin: 5px;
+	width: 270px;
+	height: 270px;
+}
+
+.shopping-basket {
+	width: 250px;
+	height: 500px;
+	background-color: $white;
+}
+
+/*
+	Basket Styles
+*/
+
+.basket {
+	height: auto;
+	background-color: $white;
+	border-radius: 1%;
+	@include display-flex(row, flex-start, flex-start, null);
+	margin-bottom: 16px;
+}
+
+.basket-contents {
+	@include display-flex(column, null, null, null);
+	width: 45%;
+	padding-bottom: 16px;
+}
+
+.basket-item {
+	position: relative;
+	margin: 16px 8px 0px 16px;
+}
+
+.basket-item-image {
+	float: left;
+	width: 100px;
+}
+
+.basket-item-info {
+	float: left;
+	margin-left: 8px;
+}
+
+.remove-item h3 {
+	display: inline-block;
+	float: right;
+	cursor: pointer;
+}
+
+.checkout-area {
+	width: 45%;
+	margin: 16px 16px 16px 16px
+}
+
+.enter-discount {
+	margin-top: 16px;
+}
+
+.enter-discount button {
+	margin-left: 8px;
+}
+
+.checkout {
+	margin-top: 16px;
+}
+
+/*
+	footer
+*/
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 150px;
+	background-color: $main-grey;
+}
+
+.footer-content {
+	line-height: 150px;
+	color: $white;
+}
+
+@media screen and (max-width: 960px) {
+	.menu h3 {
+		font-size: 12pt;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.logo h2 {
+		font-size: 18pt;
+	}
+
+	.shopping-cart {
+		font-size: 16pt;
+	}
+
+	.basket-item-image {
+		float: none;
+	}
+
+	.basket-item-info {
+		float: none;
+		margin-left: 0px;
+	}
+
+	.remove-item h3 {
+		float: none;
+	}
+}
+
+@media screen and (max-width: 540px) {
+	.desk {
+		display: none;
+	}
+
+	.mobile {
+		display: block;
+	}
+
+	.cart {
+		position: relative;
+	}
+
+	.infobar p {
+		font-size: 10pt;
+	}
+}
+
+@media screen and (max-width: 561px) {
+	.enter-discount button {
+		margin: 6px 0px;
+	}
+}
